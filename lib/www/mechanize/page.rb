@@ -34,7 +34,7 @@ module WWW
 
         # Force the encoding to be 8BIT so we can perform regular expressions.
         # We'll set it to the detected encoding later
-        body.force_encoding('ASCII-8BIT') if defined?(Encoding) && body
+        body.force_encoding('ASCII-8BIT') if defined?(Encoding) && body && body.respond_to?(:force_encoding)
 
         @encoding ||= Util.detect_charset(body)
 
